@@ -27,8 +27,9 @@ $ git clone git@github.com:sebscholl/Vitest-MSW-Example.git
 
 ## Relevant Test Directories
 
-- vitest.config.js
+- **vitest.config.js**
 - test/setup.js
 - test/mocks/index.js
 - test/views/UserList.spec.js
+- test/support/renderSupport.js
 - test/mocks/randomuser/_api.js

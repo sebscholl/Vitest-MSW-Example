@@ -1,16 +1,4 @@
-import { mount, flushPromises } from '@vue/test-utils'
-import { describe, it, expect, beforeEach } from "vitest";
-
-import { mock } from "@test/mocks";
 import UsersList from "@src/views/UsersList.vue";
-
-const renderComponent = async () => {
-    const wrapper = mount(UsersList);
-
-    await flushPromises();
-
-    return wrapper;
-}
 
 describe("UsersList component", () => {
     describe("when the users list is empty", () => {
@@ -19,7 +7,7 @@ describe("UsersList component", () => {
         beforeEach(async () => {
             mock('get', '@randomuser/api', 200, { results: [] })
 
-            wrapper = await renderComponent();
+            wrapper = await mountAndFlush(UsersList);
         })
 
         it("renders an empty users message", async () => {
@@ -33,7 +21,7 @@ describe("UsersList component", () => {
         beforeEach(async () => {
             mock('get', '@randomuser/api', 200)
 
-            wrapper = await renderComponent();
+            wrapper = await mountAndFlush(UsersList);
         })
 
         it("renders a list of users", async () => {
@@ -47,7 +35,7 @@ describe("UsersList component", () => {
         beforeEach(async () => {
             mock('get', '@randomuser/api', 500)
 
-            wrapper = await renderComponent();
+            wrapper = await mountAndFlush(UsersList);
         })
 
         it("renders an error message", async () => {
